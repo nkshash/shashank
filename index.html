@@ -382,7 +382,7 @@ This helps me learn alot of things and discover my interest.
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="https://script.google.com/macros/s/AKfycbxRvWFhKuByUSLjj4RHqo5o__fdDa-zMTxmYMG4WSvsb_GsOqmqqlXFdBeq-OMDrYIE/exec" method="POST" role="form" class="php-email-form">
+            <form action="https://script.google.com/macros/s/AKfycbxRvWFhKuByUSLjj4RHqo5o__fdDa-zMTxmYMG4WSvsb_GsOqmqqlXFdBeq-OMDrYIE/exec" method="post" role="form" class="php-email-form" name="me">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -413,11 +413,22 @@ This helps me learn alot of things and discover my interest.
         </div>
 
       </div>
+       <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyB2HuDi3w_DWMGou5hJE7ZKi-WsXziQU7QzGthdzPhVjsE9a60ggRKzDUm_V_OGnkBmQ/exec'
+            const form = document.forms['me']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for contacting us! We will reply within the next 48 hours."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
     </section>
 
   </main>
 
- 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
